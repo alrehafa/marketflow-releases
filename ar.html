@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarketFlow — منصة تداولك على ويندوز</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0b1220; color: #e6edf7; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 48px; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 19px; }
+  .m { width: 34px; height: 34px; border-radius: 9px; background: #2f6fed; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .lang { font-size: 13px; color: #9fb0cc; border: 1px solid #26375a; border-radius: 18px; padding: 6px 12px; text-decoration: none; }
+  .lang:hover { border-color: #3a4f7a; color: #dbe5f4; }
+  h1 { font-size: clamp(26px, 5vw, 38px); font-weight: 650; margin: 48px 0 10px; line-height: 1.25; }
+  .s { font-size: 16px; color: #9fb0cc; line-height: 1.7; max-width: 640px; margin: 0; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; background: #2f6fed; color: #fff; border-radius: 12px; padding: 14px 22px; font-weight: 600; font-size: 16px; text-decoration: none; }
+  .btn:hover { background: #3d7bf5; }
+  .meta { font-size: 13px; color: #6b7a94; margin-top: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 40px; }
+  .c { background: #0f1829; border: 1px solid #1c2740; border-radius: 12px; padding: 16px; }
+  .c b { display: block; font-size: 14.5px; margin-bottom: 6px; }
+  .c span { font-size: 13px; color: #8b9ab3; line-height: 1.6; }
+  .foot { margin-top: 32px; padding-top: 16px; border-top: 1px solid #1c2740; font-size: 13px; color: #6b7a94; line-height: 1.7; }
+  .ltr { direction: ltr; unicode-bidi: isolate; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="logo"><div class="m">M</div>MarketFlow</div><a class="lang" href="index.html?lang=en" onclick="try{localStorage.setItem('mfLang','en')}catch(e){}">English</a></div>
+  <h1>منصة تداولك على ويندوز</h1>
+  <p class="s">اتساع السوق، فلاتر ترسل القوائم إلى TradingView، حاسبة حجم المركز مع قواعد المخاطرة، وسجل للتداول — كلها على جهازك.</p>
+  <a class="btn" id="dl" href="https://github.com/alrehafa/marketflow-releases/releases/latest">⬇ تحميل لويندوز</a>
+  <div class="meta" id="meta">جارٍ البحث عن أحدث إصدار…</div>
+  <div class="grid"><div class="c"><b>تجربة مجانية 14 يوماً</b><span>كل الميزات. لا يلزم مفتاح للبدء.</span></div><div class="c"><b>بياناتك تبقى على جهازك</b><span>لا شيء يُرفع. النسخ الاحتياطية حيث تختار.</span></div><div class="c"><b>عربي وإنجليزي</b><span>يبدأ بلغة ويندوز لديك.</span></div><div class="c"><b>يتحدّث تلقائياً</b><span>الإصدارات الجديدة تصل داخل التطبيق.</span></div></div>
+  <div class="foot">بعد التجربة، أرسل رمز جهازك (يظهر في التطبيق) لتحصل على مفتاح.</div>
+</div>
+<script>
+  // the newest installer, straight from GitHub (the button already points at the release page if this fails)
+  fetch("https://api.github.com/repos/alrehafa/marketflow-releases/releases/latest").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    var meta = document.getElementById('meta');
+    var a = j && (j.assets || []).filter(function (x) { return /^MarketFlow-Setup-.*\.exe$/.test(x.name); })[0];
+    if (!a) { meta.innerHTML = "<a href=\"https://github.com/alrehafa/marketflow-releases/releases/latest\" style=\"color:#6f9dff\">كل الإصدارات</a> · ويندوز 10 / 11 (64 بت)"; return; }
+    document.getElementById('dl').href = a.browser_download_url;
+    var v = String(j.tag_name || '').replace(/^v/, ''), mb = Math.round(a.size / 1048576);
+    meta.innerHTML = "الإصدار" + ' <span class="ltr">' + v + '</span> · <span class="ltr">' + mb + '</span> ' + "ميجابايت" + ' · ' + "ويندوز 10 / 11 (64 بت)";
+  }).catch(function () { document.getElementById('meta').textContent = "ويندوز 10 / 11 (64 بت)"; });
+</script>
+</body>
+</html>
