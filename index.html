@@ -148,9 +148,13 @@
 
 <script>
   // the newest installer, straight from GitHub (the buttons already point at the release page if this fails)
-  fetch("https://api.github.com/repos/alrehafa/marketflow-releases/releases/latest").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-    var meta = document.getElementById('meta'), meta2 = document.getElementById('meta2');
-    var a = j && (j.assets || []).filter(function (x) { return /^MarketFlow-Setup-.*\.exe$/.test(x.name); })[0];
+  fetch("https://api.github.com/repos/alrehafa/marketflow-releases/releases?per_page=15").then(function (r) { return r.ok ? r.json() : null; }).then(function (list) {
+    var meta = document.getElementById('meta'), meta2 = document.getElementById('meta2'), j = null, a = null;
+    (Array.isArray(list) ? list : []).some(function (rel) {
+      if (rel.draft || rel.prerelease) return false;
+      var x = (rel.assets || []).filter(function (s) { return /^MarketFlow-Setup-.*\.exe$/.test(s.name) && s.state !== 'starter'; })[0];
+      if (x) { j = rel; a = x; } return !!x;
+    });
     if (!a) { meta.innerHTML = "<a href=\"https://github.com/alrehafa/marketflow-releases/releases/latest\">All versions</a> · Windows 10 / 11 (64-bit)"; return; }
     [].forEach.call(document.querySelectorAll('.dl'), function (b) { b.href = a.browser_download_url; });
     var v = String(j.tag_name || '').replace(/^v/, ''), mb = Math.round(a.size / 1048576);
