@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarketFlow — منصة تداولك على ويندوز</title>
+<meta name="description" content="اقرأ السوق بنظرة واحدة، وحدّد حجم كل صفقة حسب قواعد مخاطرتك، واحتفظ بسجل صادق لكل صفقة. سريع وخاص، بالعربية والإنجليزية.">
+<meta property="og:title" content="MarketFlow — منصة تداولك على ويندوز">
+<meta property="og:description" content="اقرأ السوق بنظرة واحدة، وحدّد حجم كل صفقة حسب قواعد مخاطرتك، واحتفظ بسجل صادق لكل صفقة. سريع وخاص، بالعربية والإنجليزية.">
+<meta property="og:image" content="https://alrehafa.github.io/marketflow-releases/img/home-ar.jpg">
+<style>
+  :root { color-scheme: dark; --bg: #070c17; --bg2: #0b1220; --card: #0e1626; --line: #1a2540; --line2: #24345a; --text: #e8eef9; --muted: #93a3bf; --dim: #63738f; --blue: #2f6fed; --blue2: #5b8cff; --green: #34d399; --red: #f0507f; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, 'Noto Kufi Arabic', Arial, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  .ltr { direction: ltr; unicode-bidi: isolate; }
+  /* nav */
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(7, 12, 23, 0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(36, 52, 90, 0.5); }
+  .nav .wrap { height: 64px; display: flex; align-items: center; gap: 28px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 17px; letter-spacing: -0.2px; }
+  .m { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(145deg, #3d7bf5, #2457d6); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 750; font-size: 16px; box-shadow: 0 4px 14px rgba(47, 111, 237, 0.35); }
+  .links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+  .links a:hover { color: var(--text); }
+  .grow { flex: 1; }
+  .lang { font-size: 13px; color: var(--muted); border: 1px solid var(--line2); border-radius: 18px; padding: 5px 12px; }
+  .lang:hover { color: var(--text); border-color: #3a4f7a; }
+  .sm { display: inline-flex; align-items: center; gap: 7px; background: var(--blue); color: #fff; border-radius: 9px; padding: 8px 14px; font-size: 13.5px; font-weight: 600; }
+  .sm:hover { background: #3d7bf5; }
+  /* hero */
+  .hero { position: relative; padding: 76px 0 0; text-align: center; }
+  .glow { position: absolute; inset: -120px 0 auto; height: 760px; pointer-events: none; background: radial-gradient(60% 50% at 50% 30%, rgba(47, 111, 237, 0.28), transparent 70%), radial-gradient(30% 30% at 80% 10%, rgba(52, 211, 153, 0.08), transparent 70%); }
+  .badge { position: relative; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #b9c8e6; background: rgba(47, 111, 237, 0.1); border: 1px solid rgba(91, 140, 255, 0.28); padding: 6px 14px; border-radius: 20px; }
+  .badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18); }
+  h1 { position: relative; font-size: clamp(36px, 6.4vw, 66px); line-height: 1.08; letter-spacing: 0; font-weight: 750; margin: 22px auto 0; max-width: 860px; }
+  h1 span { background: linear-gradient(90deg, #6f9dff, #a9c4ff 55%, #6ee7b7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { position: relative; font-size: clamp(16px, 2vw, 18.5px); color: var(--muted); max-width: 680px; margin: 22px auto 0; }
+  .ctas { position: relative; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(180deg, #3b7af3, #2a63dd); color: #fff; border-radius: 12px; padding: 15px 26px; font-weight: 650; font-size: 16px; box-shadow: 0 10px 30px rgba(47, 111, 237, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18); transition: transform 0.15s, box-shadow 0.15s; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(47, 111, 237, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18); }
+  .ghost { display: inline-flex; align-items: center; border: 1px solid var(--line2); border-radius: 12px; padding: 15px 22px; font-weight: 600; font-size: 16px; color: #cfdaf0; background: rgba(14, 22, 38, 0.6); }
+  .ghost:hover { border-color: #3a4f7a; }
+  .meta { position: relative; font-size: 13px; color: var(--dim); margin-top: 14px; min-height: 20px; }
+  .meta a { color: var(--blue2); }
+  .trust { position: relative; display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 22px; font-size: 13.5px; color: #a9b8d3; }
+  .trust span { display: inline-flex; align-items: center; gap: 7px; }
+  .trust svg { color: var(--green); }
+  .shot { position: relative; margin: 56px auto 0; max-width: 1100px; border-radius: 14px; padding: 6px; background: linear-gradient(180deg, rgba(91, 140, 255, 0.45), rgba(36, 52, 90, 0.25) 40%, rgba(36, 52, 90, 0.1)); box-shadow: 0 40px 120px -20px rgba(47, 111, 237, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03); }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 9px; }
+  .fade { position: relative; height: 90px; margin-top: -90px; background: linear-gradient(180deg, transparent, var(--bg)); pointer-events: none; }
+  /* sections */
+  section { padding: 96px 0 0; }
+  .eyebrow { font-size: 12.5px; font-weight: 650; letter-spacing: 0; text-transform: uppercase; color: var(--blue2); }
+  h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: 0; font-weight: 720; margin: 10px 0 0; }
+  .center { text-align: center; }
+  .row { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: center; padding: 56px 0; }
+  .row + .row { border-top: 1px solid var(--line); }
+  .row.flip .txt { order: 2; }
+  .txt p { color: var(--muted); font-size: 16.5px; margin: 16px 0 0; }
+  .txt ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 11px; }
+  .txt li { display: flex; gap: 10px; font-size: 15px; color: #c8d4ea; }
+  .txt li svg { flex: none; margin-top: 3px; color: var(--green); }
+  .pic { border-radius: 12px; overflow: hidden; border: 1px solid var(--line2); box-shadow: 0 24px 70px -18px rgba(0, 0, 0, 0.7), 0 0 50px -20px rgba(47, 111, 237, 0.35); }
+  .pic img { display: block; width: 100%; height: auto; }
+  .small { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 8px; }
+  .card { background: linear-gradient(180deg, var(--card), var(--bg2)); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .card .i { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(47, 111, 237, 0.12); color: var(--blue2); border: 1px solid rgba(91, 140, 255, 0.2); }
+  .card b { display: block; font-size: 16px; margin: 14px 0 6px; }
+  .card span { font-size: 14px; color: var(--muted); }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 36px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; counter-reset: s; }
+  .step { position: relative; padding: 24px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg2); }
+  .step:before { counter-increment: s; content: counter(s); display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; font-size: 15px; }
+  .step b { display: block; font-size: 17px; margin: 14px 0 6px; }
+  .step span { font-size: 14.5px; color: var(--muted); }
+  .cta { margin: 96px 0 0; padding: 56px 32px; border-radius: 20px; text-align: center; border: 1px solid rgba(91, 140, 255, 0.28); background: radial-gradient(70% 120% at 50% 0%, rgba(47, 111, 237, 0.28), transparent 70%), var(--bg2); }
+  .cta p { color: var(--muted); margin: 10px 0 26px; font-size: 16.5px; }
+  footer { margin-top: 72px; padding: 26px 0 40px; border-top: 1px solid var(--line); font-size: 13px; color: var(--dim); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  @media (max-width: 900px) {
+    .links { display: none; }
+    .row, .row.flip { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
+    .row.flip .txt { order: 0; }
+    .small, .steps { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) { .facts { grid-template-columns: 1fr; } .nav .sm span { display: none; } .hero { padding-top: 48px; } }
+</style>
+
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top"><span class="m">M</span>MarketFlow</a>
+  <nav class="links"><a href="#features">الميزات</a><a href="#start">كيف تبدأ</a></nav>
+  <span class="grow"></span>
+  <a class="lang" href="index.html?lang=en" onclick="try{localStorage.setItem('mfLang','en')}catch(e){}">English</a>
+  <a class="sm dl" href="https://github.com/alrehafa/marketflow-releases/releases/latest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span>تحميل</span></a>
+</div></header>
+
+<main id="top">
+  <div class="hero"><div class="glow"></div><div class="wrap">
+    <span class="badge"><i></i>لويندوز 10 / 11 · تجربة مجانية 14 يوماً</span>
+    <h1>منصة تداولك،<br><span>على جهازك.</span></h1>
+    <p class="sub">اقرأ السوق بنظرة واحدة، وحدّد حجم كل صفقة حسب قواعد مخاطرتك، واحتفظ بسجل صادق لكل صفقة. سريع وخاص، بالعربية والإنجليزية.</p>
+    <div class="ctas"><a class="btn dl" id="dl" href="https://github.com/alrehafa/marketflow-releases/releases/latest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span>تحميل لويندوز</span></a><a class="ghost" href="#features">شاهد ما بداخله</a></div>
+    <div class="meta" id="meta">جارٍ البحث عن أحدث إصدار…</div>
+    <div class="trust"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>تجربة مجانية 14 يوماً</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>بياناتك تبقى على جهازك</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>عربي وإنجليزي</span></div>
+    <div class="shot"><img src="img/home-ar.jpg" width="1440" height="900" alt="MarketFlow" fetchpriority="high"></div>
+    <div class="fade"></div>
+  </div></div>
+
+  <section id="features"><div class="wrap">
+    <div class="row">
+      <div class="txt"><div class="eyebrow">السوق</div><h2>السوق كله في شاشة واحدة</h2><p>كل صباح يجهّز MarketFlow الجلسة: ساعة السوق وتقويمه، الأسهم المرتفعة والمنخفضة، القمم والقيعان الجديدة، الأسهم فوق متوسطاتها، وحركة الأحجام والقطاعات والسلع.</p>
+        <ul><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>مؤشرات اتساع السوق: 52 أسبوعاً، 50 يوماً، المتوسطات، أكبر المتحركين</span></li><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>أداء القطاعات والقيمة السوقية والسلع من يوم إلى سنة</span></li><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>يتحدّث تلقائياً بعد إغلاق السوق الأمريكي</span></li></ul></div>
+      <div class="pic"><img src="img/breadth-ar.jpg" width="1440" height="900" loading="lazy" alt="السوق كله في شاشة واحدة"></div>
+    </div>
+    <div class="row flip">
+      <div class="txt"><div class="eyebrow">الحاسبة</div><h2>حجم كل صفقة حسب مخاطرتك</h2><p>اكتب الدخول والوقف والهدف. يعطيك MarketFlow عدد الأسهم والخسارة عند الوقف والربح عند الهدف مع الرسوم، وينبّهك قبل أن تخالف الصفقة قواعدك.</p>
+        <ul><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>الرصيد والصافي والتعرض ومخاطرة السوق أمامك دائماً</span></li><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>قواعدك: المخاطرة لكل صفقة، أقصى مركز، رسوم الصفقة</span></li><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>المحفظة بأسعار حية وربح/خسارة غير محققة</span></li></ul></div>
+      <div class="pic"><img src="img/calc-ar.jpg" width="1440" height="900" loading="lazy" alt="حجم كل صفقة حسب مخاطرتك"></div>
+    </div>
+    <div class="row">
+      <div class="txt"><div class="eyebrow">السجل</div><h2>سجل يقول الحقيقة</h2><p>كل صفقة وإيداع وسحب ومصروف في مكان واحد. شاهد عائدك الحقيقي ونسبة الربح ومتوسط R شهراً بشهر، واطبعه PDF مرتباً.</p>
+        <ul><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>رسم الأداء وتقويم التداول</span></li><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>رسوم بيانية وملاحظات لكل صفقة</span></li><li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>عدة حسابات: حقيقي وتجريبي</span></li></ul></div>
+      <div class="pic"><img src="img/journal-ar.jpg" width="1440" height="900" loading="lazy" alt="سجل يقول الحقيقة"></div>
+    </div>
+    <div class="small"><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16l-6.2 7.4V19l-3.6-1.8v-4.8z"/></svg></div><b>الفلاتر</b><span>شغّل فلاتر Finviz Elite وأرسل القوائم مباشرة إلى قوائم TradingView.</span></div><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8zM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></div><b>المساعد الذكي</b><span>اسأل عن السوق وعن صفقاتك، بالعربية أو الإنجليزية.</span></div><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5l8-4 8 4v9l-8 4-8-4zM4 7.5l8 4 8-4M12 11.5v9"/></svg></div><b>النسخ الاحتياطي</b><span>ملف واحد يحفظ كل شيء. نسخة أمان قبل كل تحديث.</span></div></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="facts"><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-1.5-3-5-3-5-1s3 1 5 1zm0 0c1.5-3 5-3 5-1s-3 1-5 1z"/></svg></div><b>تجربة مجانية 14 يوماً</b><span>كل الميزات. لا يلزم مفتاح للبدء.</span></div><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></svg></div><b>خاص من الأساس</b><span>صفقاتك لا تغادر جهازك. بيانات الدخول مقفلة بويندوز.</span></div><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5z"/></svg></div><b>عربي وإنجليزي</b><span>يبدأ بلغة ويندوز لديك، والاتجاه من اليمين لليسار كما يجب.</span></div><div class="card"><div class="i"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12a7.5 7.5 0 01-13.2 4.9M4.5 12a7.5 7.5 0 0113.2-4.9M18 3.5v4h-4M6 20.5v-4h4"/></svg></div><b>يتحدّث تلقائياً</b><span>الإصدارات الجديدة تُنزّل بهدوء وتُثبّت متى اخترت.</span></div></div>
+  </div></section>
+
+  <section id="start"><div class="wrap">
+    <div class="center"><div class="eyebrow">كيف تبدأ</div><h2>ابدأ خلال دقيقة</h2></div>
+    <div class="steps"><div class="step"><b>حمّل</b><span>اضغط تحميل لويندوز. ملف واحد، حوالي 110 ميجابايت.</span></div><div class="step"><b>ثبّت</b><span>افتحه. يُثبَّت MarketFlow ويضع اختصاراً على سطح المكتب.</span></div><div class="step"><b>تداول</b><span>ابدأ التجربة المجانية. بعدها أرسل رمز جهازك (يظهر في التطبيق) لتحصل على مفتاح.</span></div></div>
+    <div class="cta"><h2>جاهز قبل افتتاح السوق.</h2><p>مجاني لمدة 14 يوماً. بدون بطاقة، بدون حساب.</p><a class="btn dl" href="https://github.com/alrehafa/marketflow-releases/releases/latest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span>تحميل لويندوز</span></a><div class="meta" id="meta2"></div></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap"><span>MarketFlow · صُنع للمتداولين على ويندوز</span><span class="ltr">© 2026 MarketFlow</span></div></footer>
+
+<script>
+  // the newest installer, straight from GitHub (the buttons already point at the release page if this fails)
+  fetch("https://api.github.com/repos/alrehafa/marketflow-releases/releases/latest").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    var meta = document.getElementById('meta'), meta2 = document.getElementById('meta2');
+    var a = j && (j.assets || []).filter(function (x) { return /^MarketFlow-Setup-.*\.exe$/.test(x.name); })[0];
+    if (!a) { meta.innerHTML = "<a href=\"https://github.com/alrehafa/marketflow-releases/releases/latest\">كل الإصدارات</a> · ويندوز 10 / 11 (64 بت)"; return; }
+    [].forEach.call(document.querySelectorAll('.dl'), function (b) { b.href = a.browser_download_url; });
+    var v = String(j.tag_name || '').replace(/^v/, ''), mb = Math.round(a.size / 1048576);
+    var line = "الإصدار" + ' <span class="ltr">' + v + '</span> · <span class="ltr">' + mb + '</span> ' + "ميجابايت" + ' · ' + "ويندوز 10 / 11 (64 بت)";
+    meta.innerHTML = line; meta2.innerHTML = line;
+  }).catch(function () { document.getElementById('meta').textContent = "ويندوز 10 / 11 (64 بت)"; });
+</script>
+</body>
+</html>
